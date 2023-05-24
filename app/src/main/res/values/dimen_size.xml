@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="text_title15">15sp</dimen>
+    <dimen name="text_title35">35sp</dimen>
+
+    <dimen name="space4dp">4dp</dimen>
+    <dimen name="space6dp">6dp</dimen>
+    <dimen name="space8dp">8dp</dimen>
+
+
+</resources>
