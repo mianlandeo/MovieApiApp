@@ -9,9 +9,6 @@ plugins {
 android {
     namespace 'com.example.apimovie'
     compileSdk 33
-    kotlin {
-        jvmToolchain(17)
-    }
 
     defaultConfig {
         applicationId "com.example.apimovie"
@@ -44,20 +41,20 @@ android {
     kotlinOptions {
         jvmTarget = '17'
     }
-    buildFeatures {
-        buildConfig true
-    }
     viewBinding {
         enabled = true
     }
     kapt {
         correctErrorTypes = true
     }
+    buildFeatures {
+        buildConfig = true
+    }
 }
 
 dependencies {
 
-    implementation 'androidx.core:core-ktx:1.10.0'
+    implementation 'androidx.core:core-ktx:1.10.1'
     implementation 'androidx.appcompat:appcompat:1.6.1'
     implementation 'com.google.android.material:material:1.9.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
@@ -78,7 +75,7 @@ dependencies {
     implementation "com.squareup.retrofit2:converter-gson:$retroVersion"
 
     //Dagger Hilt
-    implementation "com.google.dagger:hilt-android:2.44"
+    implementation "com.google.dagger:hilt-android:2.44.2"
     kapt "com.google.dagger:hilt-compiler:2.44"
 
     //Glide

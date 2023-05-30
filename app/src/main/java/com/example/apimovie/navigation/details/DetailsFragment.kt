@@ -1,7 +1,6 @@
 package com.example.apimovie.navigation.details
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -20,7 +19,7 @@ class DetailsFragment : Fragment() {
 
     private lateinit var binding: FragmentDetailsBinding
     private val viewModelDetails: ViewModelDetails by viewModels()
-    val args : DetailsFragmentArgs by navArgs()
+    private val args: DetailsFragmentArgs by navArgs()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -33,11 +32,9 @@ class DetailsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        Log.e("ERROR_TAG", "1")
-        Log.e("ERROR_TAG", "${args.idDetails}")
+        viewModelDetails.getDetailsMovie(args.idDetails)
         observeStatus()
         observeDetailsMovies()
-        viewModelDetails.getDetailsMovie(args.idDetails)
 
     }
 
@@ -56,6 +53,7 @@ class DetailsFragment : Fragment() {
                     binding.appBar.visibility = View.VISIBLE
                     binding.collapsingToolBar.visibility = View.VISIBLE
                     binding.posterGone.visibility = View.GONE
+
                 }
 
                 ApiStatus.ERROR -> {
@@ -70,39 +68,42 @@ class DetailsFragment : Fragment() {
 
     private fun observeDetailsMovies() {
         viewModelDetails.movieDetails.observe(viewLifecycleOwner) {
-            //Muestra Datos si el resultado no es vacio
-            val image = it.backdropPath.ifEmpty {
-                it.posterPath
+
+            val image = if (it.backdropPath.isNullOrEmpty()) {
+                null
+            } else {
+                it.backdropPath
             }
             Glide.with(this)
-                .load("https://image.tmdb.org/t/p/w500/${image}")
+                .load(image)
                 .placeholder(
                     R.drawable.loading_animation
-                ).into(binding.posterView)
-            if (it.overview.isEmpty()) {
-                binding.tvOverviewEmpty.visibility = View.VISIBLE
-                binding.tvOverview.visibility = View.GONE
-            } else {
-                binding.tvOverviewEmpty.visibility = View.GONE
-                binding.tvOverview.visibility = View.VISIBLE
-                binding.tvOverview.text = it.overview
-            }
+                ).into(binding.backdropPathView)
+
             binding.collapsingToolBar.title = it.title
             binding.tvBudget.text = it.budget
             binding.tvPopularity.text = it.popularity.toString()
-            binding.tvReleaseData.text = it.releaseDate
-            (if (it.runtime.isEmpty()) {
+
+            // Sí el resultado de tiempo es nullo ni vacio entonces el resultado es -> - - -
+            // Sí el resultado no es nullo ni vacio entonces
+            // Texto d% + objeto tiempo le damos el resultado al text Ui
+            if (it.runtime.isNullOrEmpty()) {
                 getString(R.string.text_empty)
             } else {
                 getString(R.string.runtimeLink, it.runtime)
-            }).also { time ->
-                binding.tvRuntime.text = time
+            }.also { resultTime ->
+                binding.tvRunTime.text = resultTime
             }
-            Log.d("superTag", "${it}")
-        }
-    }
+            binding.tvGenders.text = it.genres
 
-    companion object {
-        var idMovie = 1
+            if(it.overview.isNullOrEmpty()){
+                binding.tvOverview.visibility = View.GONE
+                binding.tvOverviewEmpty.visibility = View.VISIBLE
+            } else {
+                binding.tvOverview.visibility = View.VISIBLE
+                binding.tvOverviewEmpty.visibility = View.GONE
+                binding.tvOverview.text = it.overview
+            }
+        }
     }
 }

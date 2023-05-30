@@ -1,8 +1,7 @@
 package com.example.apimovie.data.repo
 
-import android.util.Log
-import com.example.apimovie.model.ItemMovie
-import com.example.apimovie.model.toDomain
+import com.example.apimovie.model.movies.ItemMovie
+import com.example.apimovie.model.movies.toDomain
 import com.example.apimovie.data.network.ApiServiceMovie
 import com.example.apimovie.model.details.ItemDetailsMovies
 import com.example.apimovie.model.details.toDomain
@@ -17,10 +16,12 @@ class RepositoryMovie @Inject constructor(private val apiService: ApiServiceMovi
         return response?.results?.map { it.toDomain() } as MutableList<ItemMovie>
     }
 
-
+    // DetailsMovies -> DetailsMoviesItem
     suspend fun getDetailsMovie(id: Int): ItemDetailsMovies? {
         val response = apiService.getDetailsMovies(id)
         return response?.toDomain()
     }
+
+
 
 }

@@ -1,10 +1,8 @@
 package com.example.apimovie.navigation.list
 
-import android.R
 import android.annotation.SuppressLint
 import android.app.AlertDialog
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -18,7 +16,6 @@ import com.example.apimovie.model.ApiStatus
 import com.example.apimovie.viewmodel.ViewModelMovie
 import dagger.hilt.android.AndroidEntryPoint
 import kotlin.system.exitProcess
-
 
 @AndroidEntryPoint
 class ListFragment : Fragment() {
@@ -83,11 +80,8 @@ class ListFragment : Fragment() {
 
     private fun onClickMovie() {
         adapterMovie.selectedListener = { movie ->
-            //Toast.makeText(requireContext(), movie.id.toString(), Toast.LENGTH_LONG).show()
-            Log.e("ERROR_TAG", "2")
             val navigate = ListFragmentDirections.actionListFragmentToDetailsFragment(movie.id)
             findNavController().navigate(navigate)
-            Log.e("ERROR_TAG", "3")
         }
     }
 

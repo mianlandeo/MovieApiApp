@@ -1,11 +1,10 @@
 package com.example.apimovie.data.network
 
-import com.example.apimovie.model.Movie
+import com.example.apimovie.model.movies.Movie
 import com.example.apimovie.model.details.DetailsMovies
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
-
 
 class ApiServiceMovie @Inject constructor(private val apiClient: ApiClientMovie) {
 

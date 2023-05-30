@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.apimovie.model.ItemMovie
+import com.example.apimovie.model.movies.ItemMovie
 import com.example.apimovie.domain.GetMovies
 import com.example.apimovie.model.ApiStatus
 import dagger.hilt.android.lifecycle.HiltViewModel

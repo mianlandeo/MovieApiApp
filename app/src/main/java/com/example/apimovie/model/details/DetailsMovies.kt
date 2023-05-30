@@ -5,6 +5,7 @@ import com.google.gson.annotations.SerializedName
 data class DetailsMovies(
     @SerializedName("backdrop_path") val backdropPath: String?,
     @SerializedName("title") val title: String,
+    @SerializedName("genres") val genres : List<Genres>,
     @SerializedName("budget") val budget: Int,
     @SerializedName("runtime") val runtime: Int?,
     @SerializedName("overview") val overview: String,
@@ -12,7 +13,6 @@ data class DetailsMovies(
     @SerializedName("poster_path") val posterPath: String,
     @SerializedName("release_date") val releaseDate: String,
 )
-
-data class Gender(
-    @SerializedName("name") val name: String
+data class Genres(
+    val name : String
 )

@@ -1,7 +1,6 @@
 package com.example.apimovie.navigation.list
 
 import android.annotation.SuppressLint
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.apimovie.R
 import com.example.apimovie.databinding.ItemMovieBinding
-import com.example.apimovie.model.ItemMovie
+import com.example.apimovie.model.movies.ItemMovie
 
 class AdapterMovie : RecyclerView.Adapter<AdapterMovie.ViewHolder>() {
 
@@ -28,7 +27,6 @@ class AdapterMovie : RecyclerView.Adapter<AdapterMovie.ViewHolder>() {
                     .into(imageViewMovie)
                 titleViewMovie.text = item.title
                 cvMovie.setOnClickListener {
-                    Log.e("ERROR_TAG", "${item.id}")
                     itemClickListener(item)
                 }
             }

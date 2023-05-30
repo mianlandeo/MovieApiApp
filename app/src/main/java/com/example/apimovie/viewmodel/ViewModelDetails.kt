@@ -8,10 +8,12 @@ import com.example.apimovie.domain.DetailsMovies
 import com.example.apimovie.model.ApiStatus
 import com.example.apimovie.model.details.ItemDetailsMovies
 import com.example.apimovie.navigation.details.DetailsFragment
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
+@HiltViewModel
 class ViewModelDetails @Inject constructor(private val detailsMovies: DetailsMovies) : ViewModel() {
 
     private var _movieDetails = MutableLiveData<ItemDetailsMovies>()
@@ -20,10 +22,6 @@ class ViewModelDetails @Inject constructor(private val detailsMovies: DetailsMov
     private var _loading = MutableLiveData<ApiStatus>()
     val loading: LiveData<ApiStatus> get() = _loading
 
-
-    /*init {
-        getDetailsMovie(DetailsFragment.idMovie)
-    }*/
      fun getDetailsMovie(id: Int) {
         _loading.value = ApiStatus.LOADING
         viewModelScope.launch {
