@@ -84,9 +84,6 @@ class DetailsFragment : Fragment() {
             binding.tvBudget.text = it.budget
             binding.tvPopularity.text = it.popularity.toString()
 
-            // Sí el resultado de tiempo es nullo ni vacio entonces el resultado es -> - - -
-            // Sí el resultado no es nullo ni vacio entonces
-            // Texto d% + objeto tiempo le damos el resultado al text Ui
             if (it.runtime.isNullOrEmpty()) {
                 getString(R.string.text_empty)
             } else {
