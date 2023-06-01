@@ -14,11 +14,15 @@ interface ApiClientMovie {
     suspend fun getListMoviesPopular(
         @Query("api_key")
         apiKey: String = Credentials.API_KEY,
+        @Query("language")
+        language: String = "es-ES"
     ): Response<Movie>
 
     @GET("movie/{movie_id}")
     suspend fun getDetailsMovies(
         @Path("movie_id") movieId: Int,
         @Query("api_key") apiKey: String = Credentials.API_KEY,
+        @Query("language")
+        language: String = "es-ES"
     ): Response<DetailsMovies>
 }
