@@ -22,6 +22,4 @@ class RepositoryMovie @Inject constructor(private val apiService: ApiServiceMovi
         return response?.toDomain()
     }
 
-
-
 }

@@ -23,7 +23,6 @@ class ListFragment : Fragment() {
     private lateinit var binding: FragmentListBinding
     private val viewModelMovie: ViewModelMovie by viewModels()
     private lateinit var adapterMovie: AdapterMovie
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,

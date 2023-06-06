@@ -8,15 +8,15 @@ import javax.inject.Inject
 
 class ApiServiceMovie @Inject constructor(private val apiClient: ApiClientMovie) {
 
-    suspend fun serviceListMovie(): Movie?{
-        return withContext(Dispatchers.IO){
+    suspend fun serviceListMovie(): Movie? {
+        return withContext(Dispatchers.IO) {
             val response = apiClient.getListMoviesPopular()
             response.body()
         }
     }
 
     suspend fun getDetailsMovies(id: Int): DetailsMovies? {
-        return withContext(Dispatchers.IO){
+        return withContext(Dispatchers.IO) {
             val responseId = apiClient.getDetailsMovies(id)
             responseId.body()
         }

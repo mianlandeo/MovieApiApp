@@ -12,12 +12,11 @@ import com.example.apimovie.model.movies.ItemMovie
 
 class AdapterMovie : RecyclerView.Adapter<AdapterMovie.ViewHolder>() {
 
-    var selectedListener: ((ItemMovie) -> Unit)?  = null
+    var selectedListener: ((ItemMovie) -> Unit)? = null
     private var movie: List<ItemMovie> = mutableListOf()
 
     class ViewHolder constructor(view: View) :
         RecyclerView.ViewHolder(view) {
-
         private val binding = ItemMovieBinding.bind(view)
 
         fun bind(item: ItemMovie, itemClickListener: (ItemMovie) -> Unit) {

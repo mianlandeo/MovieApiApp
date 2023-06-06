@@ -10,19 +10,24 @@ import retrofit2.http.Query
 
 interface ApiClientMovie {
 
+    //https://api.themoviedb.org/3/movie/popular?api_key=baaa9a1174636d6731bd2bf3d3b9de2f&language=es-ES
     @GET("movie/popular")
     suspend fun getListMoviesPopular(
         @Query("api_key")
         apiKey: String = Credentials.API_KEY,
         @Query("language")
-        language: String = "es-ES"
+        language: String = "es-ES",
     ): Response<Movie>
 
+
+    //https://api.themoviedb.org/3/movie/movie_id?api_key=baaa9a1174636d6731bd2bf3d3b9de2f&language=es-ES
     @GET("movie/{movie_id}")
     suspend fun getDetailsMovies(
-        @Path("movie_id") movieId: Int,
-        @Query("api_key") apiKey: String = Credentials.API_KEY,
+        @Path("movie_id")
+        movieId: Int,
+        @Query("api_key")
+        apiKey: String = Credentials.API_KEY,
         @Query("language")
-        language: String = "es-ES"
+        language: String = "es-ES",
     ): Response<DetailsMovies>
 }
