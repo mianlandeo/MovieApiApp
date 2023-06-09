@@ -101,6 +101,8 @@ class DetailsFragment : Fragment() {
                 binding.tvOverviewEmpty.visibility = View.GONE
                 binding.tvOverview.text = it.overview
             }
+
+            binding.releaseDate.text = it.releaseDate
         }
     }
 }

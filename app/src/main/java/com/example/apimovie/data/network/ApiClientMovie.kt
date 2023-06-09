@@ -20,7 +20,8 @@ interface ApiClientMovie {
     ): Response<Movie>
 
 
-    //https://api.themoviedb.org/3/movie/movie_id?api_key=baaa9a1174636d6731bd2bf3d3b9de2f&language=es-ES
+
+    //https://api.themoviedb.org/3/movie/{movie_id}?api_key=baaa9a1174636d6731bd2bf3d3b9de2f&language=es-ES
     @GET("movie/{movie_id}")
     suspend fun getDetailsMovies(
         @Path("movie_id")

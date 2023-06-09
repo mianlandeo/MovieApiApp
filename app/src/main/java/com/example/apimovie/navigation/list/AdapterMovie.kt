@@ -24,7 +24,6 @@ class AdapterMovie : RecyclerView.Adapter<AdapterMovie.ViewHolder>() {
                 Glide.with(imageViewMovie)
                     .load("https://image.tmdb.org/t/p/w500/${item.poster_path}")
                     .into(imageViewMovie)
-                titleViewMovie.text = item.title
                 cvMovie.setOnClickListener {
                     itemClickListener(item)
                 }

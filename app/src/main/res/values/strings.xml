@@ -7,12 +7,15 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
     <string name="release_data">Fecha de lanzamiento:</string>
-    <string name="popularity">Popularidad:</string>
-    <string name="genders">Géneros:</string>
+    <string name="popularity">Popularidad</string>
+    <string name="genders">Género:</string>
     <string name="overview">Descripción:</string>
     <string name="text_empty">- - -</string>
     <string name="budget">Presupuesto:</string>
-    <string name="runtime">Duración de la película:</string>
-    <string name="runtimeLink">%s Minutos.</string>
+    <string name="runtime">Duración</string>
+    <string name="runtimeLink">%s Min.</string>
+    <string name="text_release_date">Lanzamiento</string>
+    <string name="language">Lenguaje</string>
+    <string name="spanish">En</string>
 
 </resources>
